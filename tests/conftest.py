@@ -26,7 +26,7 @@ async def clear_collections(mongo_client):
     for collection_name in collections_names:
         if collection_name.startswith("system"):
             continue
-        await mongo_client.get_database()[collection_name].delete_many({})
+        # await mongo_client.get_database()[collection_name].delete_many({})
 
 
 @pytest.fixture
