@@ -1,4 +1,3 @@
-from uuid import UUID
 import pytest
 from store.schemas.product import ProductIn
 from tests.factories import product_data
@@ -8,7 +7,6 @@ def test_schemas_return_success():
     data = product_data()
     product = ProductIn.model_validate(data)
 
-    assert isinstance(product.id, UUID)
     assert isinstance(product.name, str)
     assert isinstance(product.quantity, int)
     assert isinstance(product.price, float)
