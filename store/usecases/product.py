@@ -31,9 +31,10 @@ class ProductUseCase:
         return [ProductOut(**item) async for item in self.collection.find()]
 
     async def update(self, id: UUID, body: ProductUpdate) -> ProductUpdateOut:
+        product = ProductUpdate(**body.model_dump(exclude_none=True))
         result = await self.collection.find_one_and_update(
             filter={"id": id},
-            update={"$set": body.model_dump(exclude_none=True)},
+            update={"$set": product.model_dump()},
             return_document=pymongo.ReturnDocument.AFTER,
         )
         return ProductUpdateOut(**result)
