@@ -1,4 +1,3 @@
-from decimal import Decimal
 import pytest
 from store.schemas.product import ProductIn
 from tests.factories import product_data
@@ -10,7 +9,7 @@ def test_schemas_return_success():
 
     assert isinstance(product.name, str)
     assert isinstance(product.quantity, int)
-    assert isinstance(product.price, Decimal)
+    assert isinstance(product.price, float)
     assert isinstance(product.status, bool)
 
 
